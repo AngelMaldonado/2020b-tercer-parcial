@@ -24,7 +24,7 @@ public class LicensePlateService {
         int count = licensePlateRepository.countByRegion(region);
 
         if(count == MAX_LICENSES_BY_REGION){
-            throw new NotAvailableLicensePlateException();
+            throw new NotAvailableLicensePlateException("Licencias no disponibles en region");
         }
 
         LicensePlateGenerator generator = licensePlateGeneratorFactory.getInstance(region);

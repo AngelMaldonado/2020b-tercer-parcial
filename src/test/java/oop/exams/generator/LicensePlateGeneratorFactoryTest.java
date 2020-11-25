@@ -1,5 +1,6 @@
 package oop.exams.generator;
 
+import oop.exams.model.Region;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +23,11 @@ class LicensePlateGeneratorFactoryTest {
         for(String state: northStates) {
             // When:
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
+            LicensePlateGenerator instanceWithRegion = licensePlateGeneratorFactory.getInstance(Region.NORTH);
 
             // Then:
             assertThat(instance).isInstanceOf(NorthLicensePlateGenerator.class);
+            assertThat(instanceWithRegion).isInstanceOf(NorthLicensePlateGenerator.class);
         }
     }
 
@@ -36,37 +39,43 @@ class LicensePlateGeneratorFactoryTest {
         for(String state: southStates) {
             // When:
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
+            LicensePlateGenerator instanceWithRegion = licensePlateGeneratorFactory.getInstance(Region.SOUTH);
 
             // Then:
             assertThat(instance).isInstanceOf(SouthLicensePlateGenerator.class);
+            assertThat(instanceWithRegion).isInstanceOf(SouthLicensePlateGenerator.class);
         }
     }
 
     @Test
     public void givenAEastRegionState_whenGetInstance_thenEastRegionGeneratorIsReturned() {
         // Given:
-        String []southStates = {"CAM", "ROO", "TAB", "VER", "YUC"};
+        String []eastStates = {"CAM", "ROO", "TAB", "VER", "YUC"};
 
-        for(String state: southStates) {
+        for(String state: eastStates) {
             // When:
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
+            LicensePlateGenerator instanceWithRegion = licensePlateGeneratorFactory.getInstance(Region.EAST);
 
             // Then:
             assertThat(instance).isInstanceOf(EastLicensePlateGenerator.class);
+            assertThat(instanceWithRegion).isInstanceOf(EastLicensePlateGenerator.class);
         }
     }
 
     @Test
     public void givenAWestRegionState_whenGetInstance_thenWestRegionGeneratorIsReturned() {
         // Given:
-        String []southStates = {"COL", "JAL", "NAY", "SIN"};
+        String []westStates = {"COL", "JAL", "NAY", "SIN"};
 
-        for(String state: southStates) {
+        for(String state: westStates) {
             // When:
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
+            LicensePlateGenerator instanceWithRegion = licensePlateGeneratorFactory.getInstance(Region.WEST);
 
             // Then:
             assertThat(instance).isInstanceOf(WestLicensePlateGenerator.class);
+            assertThat(instanceWithRegion).isInstanceOf(WestLicensePlateGenerator.class);
         }
     }
 
@@ -78,10 +87,11 @@ class LicensePlateGeneratorFactoryTest {
         for(String state: centerStates) {
             // When:
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
+            LicensePlateGenerator instanceWithRegion = licensePlateGeneratorFactory.getInstance(Region.CENTER);
 
             // Then:
-            assertThat(instance).isInstanceOf(DefaultLicensePlateGenerator.class);
+            assertThat(instance).isInstanceOf(CenterLicensePlateGenerator.class);
+            assertThat(instanceWithRegion).isInstanceOf(CenterLicensePlateGenerator.class);
         }
     }
-
 }

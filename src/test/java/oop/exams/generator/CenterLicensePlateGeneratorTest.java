@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class DefaultLicensePlateGeneratorTest {
+public class CenterLicensePlateGeneratorTest {
 
     @Test
-    public void givenADefaultState_whenGenerate_thenLicensePlateStartsWith1() {
+    public void givenACenterState_whenGenerate_thenLicensePlateStartsWith1() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new CenterLicensePlateGenerator();
         String state = "SLP";
 
         // When:
@@ -26,10 +26,10 @@ public class DefaultLicensePlateGeneratorTest {
     }
 
     @Test
-    public void givenADefaultState_whenGenerateTwice_thenLicensesAreDifferent() {
+    public void givenACenterState_whenGenerateTwice_thenLicensesAreDifferent() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new CenterLicensePlateGenerator();
 
         // When:
         String licensePlate1 = licensePlateProvider.generate("ZAC");
@@ -40,10 +40,10 @@ public class DefaultLicensePlateGeneratorTest {
     }
 
     @Test
-    public void givenANonDefaultState_whenGenerate_thenBadRegionExceptionIsThrown() {
+    public void givenANonCenterState_whenGenerate_thenBadRegionExceptionIsThrown() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new CenterLicensePlateGenerator();
         String randomStateAbbreviation = "X" + RandomString.make(2);
 
         // When:
