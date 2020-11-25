@@ -13,7 +13,7 @@ public class DefaultLicensePlateGeneratorTest {
     public void givenADefaultState_whenGenerate_thenLicensePlateStartsWith1() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
         String state = "SLP";
 
         // When:
@@ -29,7 +29,7 @@ public class DefaultLicensePlateGeneratorTest {
     public void givenADefaultState_whenGenerateTwice_thenLicensesAreDifferent() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
 
         // When:
         String licensePlate1 = licensePlateProvider.generate("ZAC");
@@ -43,7 +43,7 @@ public class DefaultLicensePlateGeneratorTest {
     public void givenANonDefaultState_whenGenerate_thenBadRegionExceptionIsThrown() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new LicensePlateGeneratorFactory.DefaultLicensePlateGenerator();
         String randomStateAbbreviation = "X" + RandomString.make(2);
 
         // When:
